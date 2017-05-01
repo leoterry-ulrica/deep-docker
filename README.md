@@ -23,6 +23,8 @@ ADD命令。用法，ADD <src> <dest>。ADD主要用于将宿主机中的文件�
 #>docker run -d -p 1234:8080 weifj/centos:jdk-tomcat-8  
  -d：后台运行  
  -p：宿主端口与容器端口映射  
- 8080：tomcat默认端口  
- 1234：映射宿主的端口
+ 8080：tomcat默认端口  
+ 1234：映射宿主的端口  
+>4. 访问tomcat  
+ 打开浏览器，输入：http://ip:1234/，回车，即可访问到tomcat首页
 
