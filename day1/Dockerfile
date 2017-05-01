@@ -4,8 +4,8 @@ MAINTAINER weifj
 #create foler /opt/soft
 RUN mkdir -p /opt/soft
 #copy jdk and tomcat into image
-ADD ./jdk1.8.0_77.tar.gz /opt/soft
-ADD ./apache-tomcat-8.5.14.tar.gz /opt/soft
+ADD ./jdk1.8.0_77.tar.gz /opt/soft/
+ADD ./apache-tomcat-8.5.14.tar.gz /opt/soft/
 #set environment variables
 ENV JAVA_HOME /opt/soft/jdk1.8.0_77
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
