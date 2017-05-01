@@ -21,6 +21,9 @@ ADD命令。用法，ADD <src> <dest>。ADD主要用于将宿主机中的文件�
 #>docker images weifj/centos  
 >3. 运行  
 #>docker run -d -p 1234:8080 weifj/centos:jdk-tomcat-8  
+或者  
+#>docker run -i -p 1233:8080 -t --name mytest weifj/centos:jdk-tomcat-8 /bin/bash  
+ps：--name参数不能随便放，需要放在镜像的前面  
  -d：后台运行  
  -p：宿主端口与容器端口映射  
  8080：tomcat默认端口  
