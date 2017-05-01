@@ -14,7 +14,7 @@ ADD命令。用法，ADD <src> <dest>。ADD主要用于将宿主机中的文件�
 ## day1
 >1. 创建Dockerfile，os：centos，包含jdk-8和tomcat-8环境。
 >2. 创建image  
-#>docker build -t weifj/centos:jdk-tomcat-8 --rm=true .   
+#>docker build -t weifj/centos:jdk-tomcat-8 --rm=true .  
 -t：选择指定生成镜像的用户名，仓库名和tag  
 --rm=true：指定在生成镜像过程中删除中间产生的临时容器。  
 #>docker images  
