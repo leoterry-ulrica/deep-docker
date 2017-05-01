@@ -17,4 +17,5 @@ ENV PATH $JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin:$PATH
 EXPOSE 8765
 
 #define entry point which will be run first when the container starts up
+#如果需要进入容器，则建议把以下命令屏蔽
 ENTRYPOINT /opt/soft/apache-tomcat-8.5.14/bin/startup.sh && tail -F /opt/soft/apache-tomcat-8.5.14/logs/catalina.out
