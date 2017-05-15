@@ -1,0 +1,7 @@
+version: '2'
+services:
+  dubbo-consumer:
+    image: 192.168.200.56:5000/jdk-tomcat-8-web
+    container_name: dubbo-consumer
+    ports:
+      - 1234:8080

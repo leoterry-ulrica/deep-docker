@@ -1,0 +1,10 @@
+#pull down jdk-tomcat-8:v1.0.0 image
+FROM 192.168.200.56:8000/dist/jdk-tomcat-8:v1.0.0
+MAINTAINER weifj
+
+COPY ./dcm-service-sga /opt/soft/apache-tomcat-8.5.14/webapps/dcm-service-sga/
+# Expose ports.  
+EXPOSE 8865  
+
+#define entry point which will be run first when the container starts up
+ENTRYPOINT /opt/soft/apache-tomcat-8.5.14/bin/startup.sh && tail -f /opt/soft/apache-tomcat-8.5.14/logs/catalina.out

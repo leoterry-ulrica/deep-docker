@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+cp /etc/hosts /etc/hosts.temp
+sed -i "s/.*$(hostname)/$VIMDA  $(hostname)/" /etc/hosts.temp
+cat /etc/hosts.temp > /etc/hosts
+
+
+echo $1
+SERVICE_NAME=$1
+echo  "run the dubbo:" $SERVICE_NAME
+sh /opt/soft/apache-tomcat-8.5.14/bin/startup.sh && tail -f /opt/soft/apache-tomcat-8.5.14/logs/catalina.out

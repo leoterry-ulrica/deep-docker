@@ -1,0 +1,10 @@
+version: '2'
+services:
+  zookeeper:
+    image: 192.168.200.56:8000/dist/zookeeper:v3.4.8
+    container_name: zookeeper
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+
