@@ -1,1 +1,14 @@
+#pull down jdk-tomcat-8:v1.0.0 image
+FROM 192.168.200.56:8000/dist/jdk-tomcat-8:v1.0.0
+MAINTAINER weifj
 
+COPY ./dcm-service-sga /opt/soft/apache-tomcat-8.5.14/webapps/dcm-service-sga/
+# Expose ports.  
+EXPOSE 8865  
+
+ENV VIMDA=172.*.*.*
+COPY ./run.sh /run.sh
+RUN chmod 700 /run.sh
+
+#define entry point which will be run first when the container starts up
+ENTRYPOINT ["/run.sh"]
