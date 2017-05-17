@@ -1,0 +1,12 @@
+# redis server
+version: '2'
+services:
+    mysql:
+        image: 192.168.200.56:8000/dist/mysql
+        restart: always
+        container_name: mydocker-mysql
+        ports:
+            - 3306:3306
+        volumes:
+          - /data/mysql:/var/lib/mysql
+          

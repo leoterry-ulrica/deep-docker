@@ -1,0 +1,9 @@
+# redis server
+version: '2'
+services:
+    redis:
+        image: 192.168.200.56:8000/dist/redis
+        restart: always
+        container_name: mydocker-redis
+        ports:
+            - 6379:6379
