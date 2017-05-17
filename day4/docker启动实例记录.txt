@@ -1,5 +1,7 @@
 #### docker 实例
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 # >>>redis
 # docker hub image：docker pull redis
 # dist private image：192.168.200.56:8000/dist/redis
@@ -8,15 +10,30 @@
 ## mydocker-redis：容器名称
 ## redis-server：参数
 
+# 或者以yml文件启动
+>docker-compose -f docker-compose-redis.yml up -d
+## -d：表示以后台进程运行
+### docker-compose-redis.yml内容
+# redis server
+version: '2'
+services:
+    redis:
+        image: 192.168.200.56:8000/dist/redis
+        restart: always
+        container_name: mydocker-redis
+        ports:
+            - 6379:6379
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # >>>zookeeper
 # docker hub image：docker pull zookeeper
 # dist private image：192.168.200.56:8000/dist/zookeeper:latest
 # dist server：192.168.200.56
 # 使用docker-compose.yml文件编排服务，启动一个伪集群模式
->docker-compose up -d
+>docker-compose -f docker-compose-zookeeper.yml up -d
 
-#### docker-compose.yml内容
+#### docker-compose-zookeeper.yml内容
 # zookeeper cluster
 version: '2'
 services:
@@ -50,4 +67,22 @@ services:
             ZOO_MY_ID: 3
             ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
 
-			
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# >>>mysql
+# docker hub image：docker pull mysql
+# dist private image：192.168.200.56:8000/dist/mysql:latest
+# dist server：192.168.200.56
+>docker-compose -f docker-compose-redis.yml up -d
+### docker-compose-redis.yml内容
+# redis server
+version: '2'
+services:
+    mysql:
+        image: 192.168.200.56:8000/dist/mysql
+        restart: always
+        container_name: mydocker-mysql
+        ports:
+            - 3306:3306
+        volumes:
+          - /data/mysql:/var/lib/mysql
+		  
