@@ -1,0 +1,53 @@
+#### docker 实例
+
+# >>>redis
+# docker hub image：docker pull redis
+# dist private image：192.168.200.56:8000/dist/redis
+# dist server：192.168.200.56
+>docker run --name mydocker-redis -p 6379:6379  -d 192.168.200.56:8000/dist/redis redis-server --appendonly yes
+## mydocker-redis：容器名称
+## redis-server：参数
+
+
+# >>>zookeeper
+# docker hub image：docker pull zookeeper
+# dist private image：192.168.200.56:8000/dist/zookeeper:latest
+# dist server：192.168.200.56
+# 使用docker-compose.yml文件编排服务，启动一个伪集群模式
+>docker-compose up -d
+
+#### docker-compose.yml内容
+# zookeeper cluster
+version: '2'
+services:
+    zoo1:
+        image: 192.168.200.56:8000/dist/zookeeper:latest
+        restart: always
+        container_name: mydocker-zookeeper-zoo1
+        ports:
+            - 2181:2181
+        environment:
+            ZOO_MY_ID: 1
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+    zoo2:
+        image: 192.168.200.56:8000/dist/zookeeper:latest
+        container_name: mydocker-zookeeper-zoo2
+        restart: always
+        ports:
+            - 2182:2181
+        environment:
+            ZOO_MY_ID: 2
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+    zoo3:
+        image: 192.168.200.56:8000/dist/zookeeper:latest
+        container_name: mydocker-zookeeper-zoo3
+        restart: always
+        ports:
+            - 2183:2181
+        environment:
+            ZOO_MY_ID: 3
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+			
