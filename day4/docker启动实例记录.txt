@@ -83,6 +83,13 @@ services:
         container_name: mydocker-mysql
         ports:
             - 3306:3306
+		environment:
+          - MYSQL_ROOT_PASSWORD=passw0rd
+          - MYSQL_ALLOW_EMPTY_PASSWORD=no
+          - MYSQL_RANDOM_ROOT_PASSWORD=no
         volumes:
           - /data/mysql:/var/lib/mysql
+# MYSQL_ROOT_PASSWORD：设置root用户初始化密码
+# MYSQL_ALLOW_EMPTY_PASSWORD：是否允许密码为空，yes/no
+# MYSQL_RANDOM_ROOT_PASSWORD：是否允许随机设置root用户密码
 		  
