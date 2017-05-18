@@ -1,0 +1,13 @@
+# service-monitor
+version: '2'
+services:
+    service-monitor:
+        image: 192.168.200.56:8000/dist/gcc:v1.0.0
+        restart: always
+        container_name: gcc
+        ports:
+            - 2311:8080
+        environment:
+          DB_URL: jdbc:oracle:thin:@192.168.200.73:1521:orcl
+          DB_USER_NAME: xdiamond
+          DB_USER_PASSWORD: passw0rd

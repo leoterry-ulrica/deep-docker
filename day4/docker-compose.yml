@@ -1,0 +1,38 @@
+# zookeeper cluster
+version: '2'
+services:
+    zoo1:
+        image: 192.168.200.56:8000/dist/zookeeper:latest
+        restart: always
+        container_name: mydocker-zookeeper-zoo1
+        ports:
+            - 2181:2181
+        environment:
+            ZOO_MY_ID: 1
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+    zoo2:
+        image: 192.168.200.56:8000/dist/zookeeper:latest
+        container_name: mydocker-zookeeper-zoo2
+        restart: always
+        ports:
+            - 2182:2181
+        environment:
+            ZOO_MY_ID: 2
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+
+    zoo3:
+        image: 192.168.200.56:8000/dist/zookeeper:latest
+        container_name: mydocker-zookeeper-zoo3
+        restart: always
+        ports:
+            - 2183:2181
+        environment:
+            ZOO_MY_ID: 3
+            ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
+    redis:
+        image: 192.168.200.56:8000/dist/redis
+        restart: always
+        container_name: mydocker-redis
+        ports:
+            - 6379:6379
