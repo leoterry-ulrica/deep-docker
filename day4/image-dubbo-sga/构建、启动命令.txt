@@ -1,0 +1,8 @@
+>docker build -t 192.168.200.56:8000/dist/service-sga:v1.0.0 -f /opt/weifj/docker-example/day4/image-dubbo-sga/Dockerfile-dubbo .
+## 注意，-f 后面指定Dockerfile的具体路径，然后后面需要指定能查找到Dockerfile文件所在的目录，如果当前目录，则使用圆点"."表示，否则使用其它目录
+    -m表示容器最大内存
+
+## 运行docker 镜像	
+>docker run -d -p 1122:8080 -p 20882:20882 --hostname 192.168.200.56 --name sga -m 512m 192.168.200.56:8000/dist/service-sga:v1.0.0 -m 512m
+## --hostname指定服务注册的真实ip（一般是容器运行所在宿主的ip）
+## -m 设置容器运行最大内存，注意参数放置的位置
