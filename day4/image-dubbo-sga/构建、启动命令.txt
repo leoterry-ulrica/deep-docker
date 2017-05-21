@@ -6,3 +6,8 @@
 >docker run -d -p 1122:8080 -p 20882:20882 --hostname 192.168.200.56 --name sga -m 512m 192.168.200.56:8000/dist/service-sga:v1.0.0
 ## --hostname指定服务注册的真实ip（一般是容器运行所在宿主的ip）
 ## -m 设置容器运行最大内存，注意参数放置的位置
+
+##使用host模式运行容器，直接使用宿主的ip，相当于在宿主直接运行应用
+>docker run -d --name sga-host --net=host 192.168.200.56:8000/dist/service-sga:v1.0.1
+# --net设置为host，注意此时容器的端口不能跟宿主的端口冲突，也不需要显式映射端口了
+对于在docker-compose.yml文件中指定host，则需要写上：network_mode: "host"，不能写net，已经不支持这个关键字，相关链接：https://docs.docker.com/compose/compose-file/#networkmode

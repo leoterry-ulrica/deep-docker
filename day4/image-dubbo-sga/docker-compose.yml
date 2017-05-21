@@ -1,0 +1,6 @@
+# zookeeper cluster
+version: '2'
+services:
+    service-sga:
+        image: 192.168.200.56:8000/dist/service-sga:v1.0.1
+        network_mode: "host"

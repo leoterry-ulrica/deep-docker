@@ -1,0 +1,12 @@
+# redis server
+version: '2'
+services:
+    redis:
+        image: 192.168.200.56:8000/dist/service-biz:v1.0.0
+        restart: always
+        container_name: mydocker-biz
+        environment: 
+          hostname: 192.168.200.56
+        ports:
+            - 1123:8080
+            - 20880:20880
