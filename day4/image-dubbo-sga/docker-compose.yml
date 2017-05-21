@@ -1,4 +1,4 @@
-# zookeeper cluster
+# dubbo
 version: '2'
 services:
     service-sga:
